@@ -430,6 +430,6 @@ def main_app():
 
 # Callable
 if __name__ == "__main__":
-    st.set_page_config(page_title="Cantilever Beam Optimization", layout="wide")
+    st.set_page_config(page_title="Cantilever Beam Optimization", layout="wide", page_icon="https://www.svgrepo.com/show/322575/i-beam.svg")
     st.html(HTML_Template.base_style.substitute(css=MainCSS.initial_page_styles))
     main_app()
