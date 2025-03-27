@@ -294,11 +294,15 @@ def main_app():
             - **Mean Squared Error (MSE):** {mse:.4f} (Average squared difference between predicted and actual values)
             - **Mean Absolute Error (MAE):** {mae:.4f} (Average absolute difference between predicted and actual values)
             """)
+        r2_threshold = 0.98  # You can adjust this threshold as needed
+        if r2 < r2_threshold:
+            st.warning(f"The {opt_method} model: Low R² {r2:.4f}, which is below the threshold of {r2_threshold:.2f}. Consider increasing DOE points for better prediction.")
         
         st.session_state.history[datetime.now().strftime("%Y-%m-%d %H:%M:%S")] = {
-            "method": opt_method, "objective": objective, "b": opt_bh[0], "h": opt_bh[1],
+            "method": opt_method, "objective": objective,"doe_points": doe_points,
+            "b": opt_bh[0], "h": opt_bh[1],
             "weight": opt_weight, "deflection": opt_delta, "stress": opt_sigma,
-            "runtime": runtime, "r2": r2, "mse": mse, "mae": mae
+            "runtime": runtime, "r2": r2, # "mse": mse,  # "mae": mae
         }
 
     if doe_btn:
@@ -387,10 +391,17 @@ def main_app():
     st.header("History Log ⏳")
     if st.session_state.history:
         history_df = pd.DataFrame.from_dict(st.session_state.history, orient='index')
+        history_df.columns = ["Method", "Objective","DOE Points", "Width b (mm)", "Height h (mm)", "Weight (kg)", "Deflection δ (mm)", "Stress σ (MPa)", "Runtime (s)", "R²"] 
         st.dataframe(history_df.style.format({
-            "b": "{:.4f}", "h": "{:.4f}", "weight": "{:.4f}", "deflection": "{:.4f}", "stress": "{:.2f}",
-            "runtime": "{:.3f}", "r2": "{:.4f}", "mse": "{:.4f}", "mae": "{:.4f}"
-        }))
+            "b (mm)": "{:.2f}",
+            "Height h (mm)": "{:.2f}",
+            "Weight (kg)": "{:.2f}",
+            "Deflection δ (mm)": "{:.4f}", 
+            "Stress σ (MPa)": "{:.2f}",     
+            "Runtime (s)": "{:.3f}",
+            "R²": "{:.4f}"
+            
+        }),use_container_width=True)
     else:
         st.write("No history available.")
 
