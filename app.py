@@ -15,6 +15,27 @@ from page_format import HTML_Template,MainCSS
 def display_title_and_description():
     st.title("Cantilever Beam Optimization Demo")
     st.write("### Optimize: Weight, Deflection, or Stress")
+    with st.expander("Connect with Me"):
+        st.markdown("""
+                    **Author**: Copyright (c) 2025 **Nguyen Manh Tuan**
+    <style>
+        .social-buttons img {
+            transition: opacity 0.3s;
+        }
+        .social-buttons img:hover {
+            opacity: 0.7;
+        }
+    </style>
+    <div class="social-buttons" style="display: flex; gap: 20px; align-items: center;">
+        <a href="https://github.com/Nahbruhh" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="40">
+        </a>
+        <a href="https://www.linkedin.com/in/manh-tuan-nguyen19/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg" width="100">
+        </a>
+    </div>
+""", unsafe_allow_html=True)
+    
     col1, col2 = st.columns([2, 1])
     with col1:
         st.markdown("""
@@ -36,6 +57,8 @@ def display_title_and_description():
     #### Approach
     Uses ML-based methods (Random Forest, Gradient Boosting, Neural Network) to optimize the design.
     """)
+      
+        
     with col2:
         st.image("assets/beam.webp")
     st.divider()
