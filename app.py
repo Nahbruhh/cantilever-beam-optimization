@@ -290,7 +290,7 @@ def main_app():
             st.error("Optimized design violates constraints! ❌")
         st.info(f"""
             #### ML Model Performance:
-            - **R² Score:** {r2:.4f} (Higher values indicate a better fit of the model to the training data)
+            - **R² Score:** {r2:.4f} (Higher values for better fit of the meta model)
             - **Mean Squared Error (MSE):** {mse:.4f} (Average squared difference between predicted and actual values)
             - **Mean Absolute Error (MAE):** {mae:.4f} (Average absolute difference between predicted and actual values)
             """)
