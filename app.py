@@ -11,7 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from page_format import HTML_Template,MainCSS
 
-# --- App Title and Description ---
+# Description
 def display_title_and_description():
     st.title("Cantilever Beam Optimization Demo")
     st.write("### Optimize: Weight, Deflection, or Stress")
@@ -63,7 +63,7 @@ def display_title_and_description():
         st.image("assets/beam.webp")
     st.divider()
 
-# inputs
+# Inputs
 def get_user_inputs():
     with st.sidebar:
         st.header("Input Parameters 🎛️")
@@ -115,7 +115,7 @@ def get_user_inputs():
             submit_btn, doe_btn, corr_btn, optimize_btn, benchmark_btn, clear_btn, 
             b_min, b_max, h_min, h_max)
 
-# --- Computation Functions ---
+# Compute Functions
 def compute_properties(b, h, L, P, E, rho=7850):
     b_m = b / 1000
     h_m = h / 1000
@@ -249,7 +249,7 @@ def run_optimization(method, objective, bounds, doe_points, L, P, E, sigma_y, de
         st.error(f"Optimization failed: {str(e)}")
         return [b_min, h_min], float('inf'), 0, 0, float('inf'), float('inf')
 
-# --- app
+# App link
 def main_app():
     if 'history' not in st.session_state:
         st.session_state.history = {}
@@ -428,7 +428,7 @@ def main_app():
     else:
         st.write("No history available.")
 
-# --- Entry Point ---
+# Callable
 if __name__ == "__main__":
     st.set_page_config(page_title="Cantilever Beam Optimization", layout="wide")
     st.html(HTML_Template.base_style.substitute(css=MainCSS.initial_page_styles))
