@@ -96,7 +96,7 @@ def get_user_inputs():
         sigma_y = st.number_input("Yield Strength (σ_y) (MPa)", min_value=100.0, max_value=500.0, value=250.0, step=0.01)
         delta_max = st.number_input("Max Deflection (δ_max) (mm)", min_value=1.0, max_value=10.0, value=5.0, step=0.01)
         
-        doe_points = st.slider("DOE Points 🔢", 200, 1000, 100)
+        doe_points = st.slider("DOE Points 🔢", 100, 1000, 300)
         objective = st.selectbox("Optimization Objective 🎯", ["Minimize Deflection","Minimize Weight",  "Minimize Stress"], index=0)
         
         methods = {"ML-based": ["Random Forest", "Gradient Boosting", "Neural Network"]}
