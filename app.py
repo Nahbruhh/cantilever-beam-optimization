@@ -11,6 +11,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from page_format import HTML_Template,MainCSS
 
+hide_github_icon = """
+#GithubIcon {
+  visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
 # Description
 def display_title_and_description():
     st.title("Cantilever Beam Optimization Demo")
