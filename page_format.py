@@ -21,6 +21,9 @@ class MainCSS:
         body {
             font-family: 'Inter', sans-serif; /* Consistent font */
         }
+        #GithubIcon {
+            visibility: hidden;
+        }
 
         .stApp {
             padding: 2rem; /* Consistent padding */
