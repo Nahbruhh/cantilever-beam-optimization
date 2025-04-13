@@ -17,12 +17,7 @@ from page_format import HTML_Template,MainCSS
 def display_title_and_description():
     st.title("Cantilever Beam Optimization Demo")
     st.write("### Optimize: Weight, Deflection, or Stress")
-    hide_github_icon = """
-#GithubIcon {
-  visibility: hidden;
-}
-"""
-    st.markdown(hide_github_icon, unsafe_allow_html=True)
+   
     with st.expander("Connect with Me"):
         st.markdown("""
                     **Author**: Copyright (c) 2025 **Nguyen Manh Tuan**
